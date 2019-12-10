@@ -1,24 +1,30 @@
 # simpler
 
 ## Project setup
-```
-yarn install
+
+```sh
+yarn
 ```
 
-### Compiles and hot-reloads for development
-```
-yarn serve
+* Compiles and hot-reloads for development
+
+```sh
+yarn electron:serve
 ```
 
-### Compiles and minifies for production
-```
-yarn build
+* Compiles and minifies for production
+
+```sh
+yarn electron:build
 ```
 
-### Lints and fixes files
-```
-yarn lint
+* Lints and fixes files
+
+```sh
+yarn lint --fix
+
+yarn analyse
+yarn generate-docs
 ```
 
-### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
