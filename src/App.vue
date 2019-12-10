@@ -9,4 +9,6 @@
 </template>
 
 <style lang="scss">
+@import "./css/normalize.css";
+@import "./css/skeleton.css";
 </style>

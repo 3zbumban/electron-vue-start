@@ -16,9 +16,11 @@
  * @vue-event {string} activate.path - the path that is send
  */
 export default {
-  name: "HelloWorld",
-  props: {
-    msg: String
+  name: "homeComponent",
+  methods: {},
+  mounted () {
+    // console.log(`mounted: ${this.name}`);
+    // ipcRenderer.send("file-context", { from: "Browser", path: this.activePath });
   }
 };
 </script>

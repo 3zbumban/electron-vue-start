@@ -18,11 +18,10 @@ yarn electron:serve
 yarn electron:build
 ```
 
-* Lints and fixes files
+* Lints and fixes files, analyse js bundle, generate docs
 
 ```sh
-yarn lint --fix
-
+yarn lint
 yarn analyse
 yarn generate-docs
 ```

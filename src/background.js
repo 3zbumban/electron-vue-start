@@ -1,6 +1,6 @@
 "use strict";
 
-import { app, protocol, BrowserWindow, dialog } from "electron";
+import { app, protocol, BrowserWindow, dialog, Menu, shell, ipcMain } from "electron";
 import {
   createProtocol,
   // eslint-disable-next-line no-unused-vars
@@ -28,6 +28,57 @@ async function openDirectoryDialog () {
   win.show();
   return path;
 }
+
+/**
+ * main application menue
+ * @type {Array}
+ */
+const menuTemplate = [
+  {
+    label: "File",
+    submenu: [
+      {
+        label: "Add Folder",
+        async click () {
+          win.webContents.send("chosen-directory", { path: await openDirectoryDialog() });
+        },
+        accelerator: "CmdOrCtrl+Shift+N"
+      },
+      {
+        label: "Remove all folders",
+        click () {
+          win.webContents.send("remove-all-folders", {});
+        }
+      },
+      {
+        type: "separator"
+      },
+      {
+        label: "Exit",
+        role: "quit",
+        accelerator: "CmdOrCtrl+Q"
+      }
+    ]
+  },
+  {
+    label: "Extras",
+    submenu: [
+      {
+        label: "Reload",
+        role: "reload",
+        accelerator: "CmdOrCtrl+R"
+        // CmdOrCtrl+P
+      },
+      {
+        label: "Toggle Dev Tools",
+        role: "toggledevtools"
+      }
+    ]
+  }
+];
+
+const ApplicationMenu = Menu.buildFromTemplate(menuTemplate);
+Menu.setApplicationMenu(ApplicationMenu);
 
 function createWindow () {
   // Create the browser window.
@@ -108,3 +159,16 @@ if (isDevelopment) {
     });
   }
 }
+
+// todo: file context menue:
+ipcMain.on("file-context", (event, args) => {
+  const { path } = args;
+  const contextTemplate = [
+    {
+      label: "Open in Explorer",
+      click() { shell.showItemInFolder(path); },
+    },
+  ];
+  const fileContextMenu = Menu.buildFromTemplate(contextTemplate);
+  fileContextMenu.popup({ window: win });
+});

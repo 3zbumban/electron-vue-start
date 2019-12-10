@@ -4,6 +4,8 @@ const purgecss = require("@fullhuman/postcss-purgecss");
 const autoprefixer = require("autoprefixer");
 const cssnano = require("cssnano");
 const atImport = require("postcss-import");
+const reporter = require("postcss-reporter");
+const cssstats = require("cssstats");
 
 const plugins = [
   autoprefixer
@@ -43,6 +45,11 @@ if (process.env.NODE_ENV === "production") {
     }]
   }));
 }
+
+// https://cssstats.com/docs/pkg/core
+plugins.push(cssstats());
+// https://github.com/postcss/postcss-reporter
+plugins.push(reporter({ filter: (message) => { return true; }, clearAllMessages: true }));
 
 module.exports = {
   plugins
