@@ -1,0 +1,15 @@
+@import "../css/normalize.css";
+@import "../css/skeleton.css";
+
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.full {
+    height: 100%;
+    width: 100%;
+}
