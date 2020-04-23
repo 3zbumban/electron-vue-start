@@ -166,8 +166,8 @@ ipcMain.on("file-context", (event, args) => {
   const contextTemplate = [
     {
       label: "Open in Explorer",
-      click() { shell.showItemInFolder(path); },
-    },
+      click () { shell.showItemInFolder(path); }
+    }
   ];
   const fileContextMenu = Menu.buildFromTemplate(contextTemplate);
   fileContextMenu.popup({ window: win });
