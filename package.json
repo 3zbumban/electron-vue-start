@@ -34,7 +34,7 @@
     "css-loader": "^3.5.2",
     "cssnano": "^4.1.10",
     "cssstats": "^3.4.1",
-    "electron": "^8.2.3",
+    "electron": "^8.5.1",
     "eslint": "^6.8.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-node": "^11.1.0",
